@@ -1,0 +1,13 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "es5",                          
+    "module": "commonjs",                     
+    "lib": ["ES2018", "DOM"], 
+    "outDir": "./build",                        
+    "strict": true, 
+    "esModuleInterop": true,                           
+    "noImplicitAny": true,                               /* Skip type checking all .d.ts files. */
+  },
+  "exclude": ["node_modules", "./dist", "spec"]
+}
