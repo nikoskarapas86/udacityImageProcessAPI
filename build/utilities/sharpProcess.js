@@ -40,28 +40,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var sharp_1 = __importDefault(require("sharp"));
-var getMetadata = function (image) { return __awaiter(void 0, void 0, void 0, function () {
-    var metadata, error_1;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 2, , 3]);
-                console.log("edw?????????");
-                console.log("images/".concat(image, ".png"));
-                return [4 /*yield*/, (0, sharp_1.default)("assets/images/".concat(image, ".png").toString()).metadata()];
-            case 1:
-                metadata = _a.sent();
-                return [2 /*return*/, metadata];
-            case 2:
-                error_1 = _a.sent();
-                console.log("An error occurred during processing: ".concat(error_1));
-                throw new Error("An error occurred during processing: ".concat(error_1));
-            case 3: return [2 /*return*/];
-        }
-    });
-}); };
+// const getMetadata = async (image: string): Promise<any> => {
+//   try {
+//     const metadata = await sharp(
+//       `assets/images/${image}.png`.toString()
+//     ).metadata();
+//     return metadata;
+//   } catch (error) {
+//     console.log(`An error occurred during processing: ${error}`);
+//     throw new Error(`An error occurred during processing: ${error}`);
+//   }
+// };
 var resizeImage = function (query) { return __awaiter(void 0, void 0, void 0, function () {
-    var resizedImage, error_2;
+    var resizedImage, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -76,11 +67,11 @@ var resizeImage = function (query) { return __awaiter(void 0, void 0, void 0, fu
                 resizedImage = _a.sent();
                 return [2 /*return*/, resizedImage];
             case 2:
-                error_2 = _a.sent();
-                console.log(error_2);
+                error_1 = _a.sent();
+                console.log(error_1);
                 throw new Error();
             case 3: return [2 /*return*/];
         }
     });
 }); };
-exports.default = { getMetadata: getMetadata, resizeImage: resizeImage };
+exports.default = { resizeImage: resizeImage };
