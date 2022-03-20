@@ -28,4 +28,3 @@ const resizeImage = async (query: ImageQueryParams): Promise<any> => {
   }
 };
 export default { getMetadata, resizeImage };
-//   getMetadata().then(res =>resizeImage() )
