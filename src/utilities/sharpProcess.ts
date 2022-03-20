@@ -1,18 +1,16 @@
 import sharp from "sharp";
 import ImageQueryParams from "../models/imageQueryParams";
-const getMetadata = async (image: string): Promise<any> => {
-  try {
-    console.log("edw?????????");
-    console.log(`images/${image}.png`);
-    const metadata = await sharp(
-      `assets/images/${image}.png`.toString()
-    ).metadata();
-    return metadata;
-  } catch (error) {
-    console.log(`An error occurred during processing: ${error}`);
-    throw new Error(`An error occurred during processing: ${error}`);
-  }
-};
+// const getMetadata = async (image: string): Promise<any> => {
+//   try {
+//     const metadata = await sharp(
+//       `assets/images/${image}.png`.toString()
+//     ).metadata();
+//     return metadata;
+//   } catch (error) {
+//     console.log(`An error occurred during processing: ${error}`);
+//     throw new Error(`An error occurred during processing: ${error}`);
+//   }
+// };
 const resizeImage = async (query: ImageQueryParams): Promise<any> => {
   try {
     const resizedImage =  await sharp(`assets/images/${query.target}.png`.toString())
@@ -27,4 +25,4 @@ const resizeImage = async (query: ImageQueryParams): Promise<any> => {
     throw new Error();
   }
 };
-export default { getMetadata, resizeImage };
+export default { resizeImage };
