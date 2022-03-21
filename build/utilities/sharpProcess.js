@@ -40,17 +40,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var sharp_1 = __importDefault(require("sharp"));
-// const getMetadata = async (image: string): Promise<any> => {
-//   try {
-//     const metadata = await sharp(
-//       `assets/images/${image}.png`.toString()
-//     ).metadata();
-//     return metadata;
-//   } catch (error) {
-//     console.log(`An error occurred during processing: ${error}`);
-//     throw new Error(`An error occurred during processing: ${error}`);
-//   }
-// };
 var resizeImage = function (query) { return __awaiter(void 0, void 0, void 0, function () {
     var resizedImage, error_1;
     return __generator(this, function (_a) {

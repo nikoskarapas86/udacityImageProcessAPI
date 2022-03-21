@@ -12,20 +12,19 @@ var validQueryParams = function (query, res) {
     sharpProcess_1.default.resizeImage(query).then(function (response) {
         if (response) {
             var target = "/assets/thumb/".concat(query.target, "_").concat(query.width, "x").concat(query.height, ".png").toString();
-            res.sendFile(target, { root: "." });
+            res.sendFile(target, { root: '.' });
         }
     });
 };
 var invalidQueryParams = function (res) {
-    res.send("invalid width or height");
+    res.send('invalid width or height');
 };
 var processImage = function (query, res) {
-    validator_1.default.validateNumber(query.height) &&
-        validator_1.default.validateNumber(query.width)
+    validator_1.default.validateNumber(query.height) && validator_1.default.validateNumber(query.width)
         ? validQueryParams(query, res)
         : invalidQueryParams(res);
 };
-imageForProcess.get("/", function (req, res) {
+imageForProcess.get('/', function (req, res) {
     var url_parts = url_1.default.parse(req.url, true);
     var query = url_parts.query;
     processImage(query, res);
