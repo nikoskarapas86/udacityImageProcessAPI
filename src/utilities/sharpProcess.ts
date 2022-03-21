@@ -1,5 +1,5 @@
-import sharp from "sharp";
-import ImageQueryParams from "../models/imageQueryParams";
+import sharp from 'sharp';
+import ImageQueryParams from '../models/imageQueryParams';
 // const getMetadata = async (image: string): Promise<any> => {
 //   try {
 //     const metadata = await sharp(
@@ -13,13 +13,13 @@ import ImageQueryParams from "../models/imageQueryParams";
 // };
 const resizeImage = async (query: ImageQueryParams): Promise<any> => {
   try {
-    const resizedImage =  await sharp(`assets/images/${query.target}.png`.toString())
+    const resizedImage = await sharp(`assets/images/${query.target}.png`.toString())
       .resize({
         width: parseInt(query.width),
         height: parseInt(query.height),
       })
       .toFile(`assets/thumb/${query.target}_${query.width}x${query.height}.png`.toString());
-     return resizedImage
+    return resizedImage;
   } catch (error) {
     console.log(error);
     throw new Error();
