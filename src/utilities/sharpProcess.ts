@@ -12,7 +12,7 @@ const resizeImage = async (query: ImageQueryParams): Promise<ResizedImage | stri
       .toFile(`assets/thumb/${query.target}_${query.width}x${query.height}.png`.toString());
     return resizedImage;
   } catch (error) {
-    return "an error has been occured ,probably you insert invalid number on width height or target"
+    return 'an error has been occured ,probably you insert invalid number on width height or target';
   }
 };
 export default { resizeImage };
