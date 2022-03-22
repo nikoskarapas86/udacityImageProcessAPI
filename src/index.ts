@@ -7,7 +7,7 @@ const port = 3000;
 app.use('/api', routes);
 app.use(express.static(__dirname + '/views'));
 
-app.get('/', function (req, res) {
+app.get('/',  (req:express.Request, res: express.Response):void=> {
   res.sendFile('views/welcome.html', { root: __dirname });
 });
 app.listen(port, () => {
