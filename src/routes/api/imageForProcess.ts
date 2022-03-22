@@ -10,11 +10,10 @@ const createThumb = async (): Promise<boolean> => {
   const imagesThumbPath = path.resolve('.', './assets/thumb');
   try {
     await fsPromises.access(imagesThumbPath);
-    return true;
   } catch {
     fsPromises.mkdir(imagesThumbPath);
   }
-  return false;
+  return true;
 };
 const resizeImage = (query: ImageQueryParams, res: express.Response) => {
   sharpProcess.resizeImage(query).then((response) => {
@@ -26,7 +25,7 @@ const resizeImage = (query: ImageQueryParams, res: express.Response) => {
 };
 const validQueryParams = async (query: ImageQueryParams, res: express.Response): Promise<void> => {
   const existsFile: boolean = await createThumb();
-  existsFile ? resizeImage(query, res) : null;
+  existsFile && resizeImage(query, res);
 };
 
 const invalidQueryParams = (res: express.Response): void => {
