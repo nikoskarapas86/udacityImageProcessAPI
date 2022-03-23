@@ -3,6 +3,7 @@ import { promises as fsPromises } from 'fs';
 import path from 'path';
 import url from 'url';
 import ImageQueryParams from '../../models/imageQueryParams';
+import ResizedImage from '../../models/resizedImage';
 import sharpProcess from '../../utilities/sharpProcess';
 import validator from '../../utilities/validator';
 const imageForProcess = express.Router();
@@ -15,14 +16,13 @@ const createThumb = async (): Promise<boolean> => {
   }
   return true;
 };
-const resizeImage = (query: ImageQueryParams, res: express.Response) => {
-  sharpProcess.resizeImage(query).then((response) => {
-    if (response) {
-      const target: string = `/assets/thumb/${query.target}_${query.width}x${query.height}.png`.toString();
-      res.sendFile(target, { root: '.' });
-    }
-  });
+const resizeImage = async (query: ImageQueryParams, res: express.Response): Promise<ResizedImage | string> => {
+  const resizedImage: ResizedImage | string = await sharpProcess.resizeImage(query);
+  const target: string = `/assets/thumb/${query.target}_${query.width}x${query.height}.png`.toString();
+  res.sendFile(target, { root: '.' });
+  return resizedImage;
 };
+
 const validQueryParams = async (query: ImageQueryParams, res: express.Response): Promise<void> => {
   const existsFile: boolean = await createThumb();
   existsFile && resizeImage(query, res);
